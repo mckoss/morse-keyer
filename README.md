@@ -8,7 +8,7 @@ for more information.
 Brad Mitchell's [History of Curtis Keyers](./docs/curtis-qst-aug-2016.png) appeared in the August 2016 edition of QST magazine.  He also posted this
 YouTube video about it here:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HjsUctIE3-I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![John Curtis Electro Devices Keyers](https://img.youtube.com/vi/HjsUctIE3-I/0.jpg)](https://www.youtube.com/watch?v=HjsUctIE3-I)
 
 The interface is using the keyboard (or virtual keyboard) right and left
 control keys.  See the [Ham Radio Solutions USB interface](https://hamradio.solutions/vband/) to use a
