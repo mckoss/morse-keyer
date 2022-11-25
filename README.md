@@ -41,3 +41,8 @@ Here's a quick explanation of some of the keyer features.
 - Character decoder - display decoded letters as they are sent.
 - Sending analyzer - show statistics of accuracy of code sending (v.s. standard symbol length and
   character and word spacing).
+
+# Hardware Implementation
+
+See also a related [circuit simulation](https://circuitverse.org/users/155805/projects/morse-keyer)
+of a simple keyer.
