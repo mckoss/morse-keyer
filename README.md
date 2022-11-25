@@ -46,3 +46,9 @@ Here's a quick explanation of some of the keyer features.
 
 See also a related [circuit simulation](https://circuitverse.org/users/155805/projects/morse-keyer)
 of a simple keyer.
+
+# Morse Code Character Set
+
+A &rightarrow; &sdot;&minus;
+<br>C &rightarrow; &minus;&sdot;&minus;&sdot;
+<br><span style="text-decoration: overline">AR</span> &rightarrow; &sdot;&minus;&sdot;&minus;&sdot;
