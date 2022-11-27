@@ -52,3 +52,15 @@ of a simple keyer.
 A &rightarrow; &sdot;&minus;
 <br>C &rightarrow; &minus;&sdot;&minus;&sdot;
 <br><span style="text-decoration: overline">AR</span> &rightarrow; &sdot;&minus;&sdot;&minus;&sdot;
+
+# Using this Repo
+
+```
+$ npm install
+$ npm run build
+$ npm test
+$ npm run coverage   # For code coverage and performance tracking.
+```
+
+I find it convenient to use `npm run watch` to compile source files
+incrementally as they are modified and saved.

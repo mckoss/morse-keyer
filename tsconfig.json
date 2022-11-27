@@ -1,0 +1,18 @@
+
+{
+    "compilerOptions": {
+      "strict": true,
+      "target": "es2020",
+      "module": "es6",
+      "rootDir": "src",
+      "moduleResolution": "Node",
+      "outDir": "scripts",
+      "sourceMap": true,
+      "inlineSources": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "skipLibCheck": true,
+      "baseUrl": ".",
+    },
+    "include": ["src/**/*"],
+  }
