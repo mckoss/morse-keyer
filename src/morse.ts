@@ -1,4 +1,4 @@
-export { MORSE_LETTERS };
+export { MORSE_LETTERS, MORSE_DIGITS, MORSE_PUNCTUATION, MORSE_PROSIGNS, MORSE_ALL };
 
 // Table of all Morse code letters
 const MORSE_LETTERS = {
@@ -9,7 +9,7 @@ const MORSE_LETTERS = {
     Y: '-.--', Z: '--..'
 };
 
-const MORSE_NUMBERS = {
+const MORSE_DIGITS = {
     0: '-----', 1: '.----', 2: '..---', 3: '...--', 4: '....-',
     5: '.....', 6: '-....', 7: '--...', 8: '---..', 9: '----.'
 };
@@ -33,3 +33,5 @@ const MORSE_PROSIGNS = {
     'KN': 'End of transmission - other station only reply',
     'HH': 'Sending error - retying',
 };
+
+const MORSE_ALL = { ...MORSE_LETTERS, ...MORSE_DIGITS, ...MORSE_PUNCTUATION };
