@@ -1,4 +1,9 @@
-export { MORSE_LETTERS, MORSE_DIGITS, MORSE_PUNCTUATION, MORSE_PROSIGNS, MORSE_ALL };
+export { MORSE_LETTERS, MORSE_DIGITS, MORSE_PUNCTUATION, MORSE_PROSIGNS, MORSE_ALL, MORSE_DOT, MORSE_DASH, htmlFromMorse };
+const MORSE_DOT = "&sdot;";
+const MORSE_DASH = "-";
+function htmlFromMorse(morse) {
+    return morse.replace(/\./g, MORSE_DOT).replace(/-/g, MORSE_DASH);
+}
 // Table of all Morse code letters
 const MORSE_LETTERS = {
     A: '.-', B: '-...', C: '-.-.', D: '-..', E: '.', F: '..-.',

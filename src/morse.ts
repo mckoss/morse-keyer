@@ -1,7 +1,21 @@
-export { MORSE_LETTERS, MORSE_DIGITS, MORSE_PUNCTUATION, MORSE_PROSIGNS, MORSE_ALL };
+export {
+    MorseTable, MORSE_LETTERS, MORSE_DIGITS, MORSE_PUNCTUATION, MORSE_PROSIGNS, MORSE_ALL,
+    MORSE_DOT, MORSE_DASH, htmlFromMorse
+};
+
+interface MorseTable {
+    [character: string]: string;
+}
+
+const MORSE_DOT = "&sdot;";
+const MORSE_DASH = "-";
+
+function htmlFromMorse(morse: string): string {
+    return morse.replace(/\./g, MORSE_DOT).replace(/-/g, MORSE_DASH);
+}
 
 // Table of all Morse code letters
-const MORSE_LETTERS = {
+const MORSE_LETTERS: MorseTable = {
     A: '.-', B: '-...', C: '-.-.', D: '-..', E: '.', F: '..-.',
     G: '--.', H: '....', I: '..', J: '.---', K: '-.-', L: '.-..',
     M: '--', N: '-.', O: '---', P: '.--.', Q: '--.-', R: '.-.',
@@ -9,12 +23,12 @@ const MORSE_LETTERS = {
     Y: '-.--', Z: '--..'
 };
 
-const MORSE_DIGITS = {
+const MORSE_DIGITS: MorseTable = {
     0: '-----', 1: '.----', 2: '..---', 3: '...--', 4: '....-',
     5: '.....', 6: '-....', 7: '--...', 8: '---..', 9: '----.'
 };
 
-const MORSE_PUNCTUATION = {
+const MORSE_PUNCTUATION: MorseTable = {
     '.': '.-.-.-', ',': '--..--', '?': '..--..', "'": '.----.',
     '!': '-.-.--', '/': '-..-.', '(': '-.--.', ')': '-.--.-',
     '&': '.-...', ':': '---...', ';': '-.-.-.', '=': '-...-',

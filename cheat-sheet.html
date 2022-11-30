@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/cheat-sheet.css">
+    <title>CW Cheat-sheet</title>
+</head>
+<body>
+    <h1>CW Cheat-sheet</h1>
+    <div id="letter-table"></div>
+    <script type="module">
+        import { MORSE_LETTERS } from './scripts/morse.js';
+        import { tableFromElements } from './scripts/cheat-sheet.js';
+
+        const letterTable = document.getElementById('letter-table');
+        letterTable.appendChild(tableFromElements(MORSE_LETTERS));
+    </script>
+</body>
+</html>
