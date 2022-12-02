@@ -1,20 +1,24 @@
 import { MorseTable, morseToSvg } from './morse.js';
 
-export { tableFromElements };
+export { tableFromElements, morseTableFromElements };
 
-function tableFromElements(elements: MorseTable, keys?: string[]): HTMLDivElement {
-  const table = document.createElement('div');
-  table.className = 'morse-table';
-  keys = keys || Object.keys(elements).sort();
+function morseTableFromElements(elements: MorseTable, keys?: string[]): HTMLDivElement {
+    return tableFromElements(elements, 'morse-table', morseToSvg, keys);
+}
 
-  for (const key of keys) {
-    const elt = document.createElement('div');
-    const sym = document.createElement('span');
-    sym.textContent = key;
-    elt.appendChild(sym);
-    elt.insertAdjacentHTML('beforeend', morseToSvg(elements[key]));
-    table.appendChild(elt);
-  }
+function tableFromElements(elements: MorseTable, className: string, mapping: (val: string) => string, keys?: string[]): HTMLDivElement {
+    const table = document.createElement('div');
+    table.className = className;
+    keys = keys || Object.keys(elements).sort();
 
-  return table;
+    for (const key of keys) {
+        const elt = document.createElement('div');
+        const sym = document.createElement('span');
+        sym.textContent = key;
+        elt.appendChild(sym);
+        elt.insertAdjacentHTML('beforeend', mapping(elements[key]));
+        table.appendChild(elt);
+    }
+
+    return table;
 }
