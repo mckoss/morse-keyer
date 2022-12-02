@@ -1,5 +1,5 @@
 export {
-    MorseTable, MORSE_LETTERS, MORSE_DIGITS, MORSE_PUNCTUATION, MORSE_PROSIGNS, MORSE_ALL,
+    MorseTable, MORSE_LETTERS, MORSE_DIGITS, MORSE_SYMBOLS, MORSE_PROSIGNS, MORSE_ALL,
     MORSE_DOT, MORSE_DASH, htmlFromMorse, textToMorse, morseToTiming, morseToSvg
 };
 
@@ -30,7 +30,7 @@ const MORSE_DIGITS: MorseTable = {
     5: '.....', 6: '-....', 7: '--...', 8: '---..', 9: '----.'
 };
 
-const MORSE_PUNCTUATION: MorseTable = {
+const MORSE_SYMBOLS: MorseTable = {
     '.': '.-.-.-', ',': '--..--', '?': '..--..', "'": '.----.',
     '!': '-.-.--', '/': '-..-.', '(': '-.--.', ')': '-.--.-',
     '&': '.-...', ':': '---...', ';': '-.-.-.', '=': '-...-',
@@ -50,7 +50,7 @@ const MORSE_PROSIGNS = {
     'HH': 'Sending error - retying',
 };
 
-const MORSE_ALL = { ...MORSE_LETTERS, ...MORSE_DIGITS, ...MORSE_PUNCTUATION };
+const MORSE_ALL = { ...MORSE_LETTERS, ...MORSE_DIGITS, ...MORSE_SYMBOLS };
 
 // Convert string of characters to string or morse code dots, dashes, and spaces.
 // Inter-character spacing will output as a single space.  Inter-word spacing will output as a

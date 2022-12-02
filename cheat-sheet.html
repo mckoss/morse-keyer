@@ -9,14 +9,29 @@
     <title>CW Cheat-sheet</title>
 </head>
 <body>
-    <h1>CW Cheat-sheet</h1>
+    <h1>Ham Radio CW Cheatsheet<span class="by">by K7MCK</span></h1>
+    <h2>Letters</h2>
     <div id="letter-table"></div>
+
+    <h2>Numbers</h2>
+    <div id="number-table"></div>
+
+    <h2>Symbols</h2>
+    <div id="symbol-table"></div>
+
     <script type="module">
-        import { MORSE_LETTERS } from './scripts/morse.js';
+        import { MORSE_LETTERS, MORSE_DIGITS, MORSE_SYMBOLS } from './scripts/morse.js';
         import { tableFromElements } from './scripts/cheat-sheet.js';
 
         const letterTable = document.getElementById('letter-table');
         letterTable.appendChild(tableFromElements(MORSE_LETTERS));
+
+        const numberTable = document.getElementById('number-table');
+        numberTable.appendChild(tableFromElements(MORSE_DIGITS, [1,2,3,4,5]));
+        numberTable.appendChild(tableFromElements(MORSE_DIGITS, [6,7,8,9,0]));
+
+        const symbolTable = document.getElementById('symbol-table');
+        symbolTable.appendChild(tableFromElements(MORSE_SYMBOLS));
     </script>
 </body>
 </html>

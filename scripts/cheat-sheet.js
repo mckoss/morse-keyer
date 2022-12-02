@@ -1,13 +1,16 @@
 import { morseToSvg } from './morse.js';
 export { tableFromElements };
-function tableFromElements(elements) {
-    const table = document.createElement('table');
+function tableFromElements(elements, keys) {
+    const table = document.createElement('div');
     table.className = 'morse-table';
-    const ordered = Object.keys(elements).sort();
-    for (const key of ordered) {
-        const row = table.insertRow();
-        row.insertCell().textContent = key;
-        row.insertCell().innerHTML = morseToSvg(elements[key]);
+    keys = keys || Object.keys(elements).sort();
+    for (const key of keys) {
+        const elt = document.createElement('div');
+        const sym = document.createElement('span');
+        sym.textContent = key;
+        elt.appendChild(sym);
+        elt.insertAdjacentHTML('beforeend', morseToSvg(elements[key]));
+        table.appendChild(elt);
     }
     return table;
 }

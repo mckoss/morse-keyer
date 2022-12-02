@@ -1,4 +1,4 @@
-export { MORSE_LETTERS, MORSE_DIGITS, MORSE_PUNCTUATION, MORSE_PROSIGNS, MORSE_ALL, MORSE_DOT, MORSE_DASH, htmlFromMorse, textToMorse, morseToTiming, morseToSvg };
+export { MORSE_LETTERS, MORSE_DIGITS, MORSE_SYMBOLS, MORSE_PROSIGNS, MORSE_ALL, MORSE_DOT, MORSE_DASH, htmlFromMorse, textToMorse, morseToTiming, morseToSvg };
 // These are close but imperfect approximations of correctly aligned
 // and scaled dots and dashes.
 const MORSE_DOT = "&sdot;";
@@ -18,7 +18,7 @@ const MORSE_DIGITS = {
     0: '-----', 1: '.----', 2: '..---', 3: '...--', 4: '....-',
     5: '.....', 6: '-....', 7: '--...', 8: '---..', 9: '----.'
 };
-const MORSE_PUNCTUATION = {
+const MORSE_SYMBOLS = {
     '.': '.-.-.-', ',': '--..--', '?': '..--..', "'": '.----.',
     '!': '-.-.--', '/': '-..-.', '(': '-.--.', ')': '-.--.-',
     '&': '.-...', ':': '---...', ';': '-.-.-.', '=': '-...-',
@@ -36,7 +36,7 @@ const MORSE_PROSIGNS = {
     'KN': 'End of transmission - other station only reply',
     'HH': 'Sending error - retying',
 };
-const MORSE_ALL = { ...MORSE_LETTERS, ...MORSE_DIGITS, ...MORSE_PUNCTUATION };
+const MORSE_ALL = { ...MORSE_LETTERS, ...MORSE_DIGITS, ...MORSE_SYMBOLS };
 // Convert string of characters to string or morse code dots, dashes, and spaces.
 // Inter-character spacing will output as a single space.  Inter-word spacing will output as a
 // verticle bar surrounded by spaces (' | ').
