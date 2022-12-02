@@ -5,10 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/cheat-sheet.css">
+    <link rel="stylesheet" href="./styles/morse.css">
     <title>CW Cheat-sheet</title>
 </head>
 <body>
     <h1>CW Cheat-sheet</h1>
+    <svg width="40px" height="25px" viewBox="0 0 80 50" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <g class="morse">
+            <line x1="20" y1="25" x2="20" y2="25"  />
+            <line x1="40" y1="25" x2="60" y2="25"  />
+        </g>
+    </svg>
+
     <div id="letter-table"></div>
     <script type="module">
         import { MORSE_LETTERS } from './scripts/morse.js';

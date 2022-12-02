@@ -1,14 +1,16 @@
 export {
     MorseTable, MORSE_LETTERS, MORSE_DIGITS, MORSE_PUNCTUATION, MORSE_PROSIGNS, MORSE_ALL,
-    MORSE_DOT, MORSE_DASH, htmlFromMorse
+    MORSE_DOT, MORSE_DASH, htmlFromMorse, textToMorse
 };
 
 interface MorseTable {
     [character: string]: string;
 }
 
+// These are close but imperfect approximations of correctly aligned
+// and scaled dots and dashes.
 const MORSE_DOT = "&sdot;";
-const MORSE_DASH = "-";
+const MORSE_DASH = "&minus;";
 
 function htmlFromMorse(morse: string): string {
     return morse.replace(/\./g, MORSE_DOT).replace(/-/g, MORSE_DASH);
@@ -49,3 +51,62 @@ const MORSE_PROSIGNS = {
 };
 
 const MORSE_ALL = { ...MORSE_LETTERS, ...MORSE_DIGITS, ...MORSE_PUNCTUATION };
+
+// Convert string with '.', '-', and ' ' to an svg element that renders the morse code as dots and
+// dashes. This uses morse.css for common styling of line width and color. This is based on an SVG
+// coordinate system wher the dots are 10 units wide.  We also add 15 units of space before and
+// after the symbols - so that abutting symbols would be correctly spaced at 30 units apart
+// (inter-character spacing).
+//
+// Dot width: 10 units (same as line width)
+// Dash width: 30 units (20 unit line with end-caps of 5 units each)
+// Inter-symbol spacing: 10 units
+// Inter-charcter spacing: 30 units
+// Prefix/postfix spacing: 15 units
+function morseToSvg(morse: string): string {
+//     <svg width="40px" height="25px" viewBox="0 0 80 50" version="1.1" xmlns="http://www.w3.org/2000/svg">
+//     <g class="morse">
+//         <line x1="20" y1="25" x2="20" y2="25"  />
+//         <line x1="40" y1="25" x2="60" y2="25"  />
+//     </g>
+// </svg>
+//     return morse.replace(/\./g, MORSE_DOT).replace(/-/g, MORSE_DASH);
+    return morse;
+}
+
+// Convert string of characters to string or morse code dots, dashes, and spaces.
+// Inter-character spacing will output as a single space.  Inter-word spacing will output as a
+// verticle bar surrounded by spaces (' | ').
+//
+// Prosigns can be input as <SK>, for example and there will be no space insterst in the
+// sequence '...-.-'.
+function textToMorse(text: string): string {
+    text = text.trim();
+    text = text.replace(/\s\s+/g, ' ');
+    let result = '';
+    let spacing = ' ';
+    for (let c of text) {
+        c = c.toUpperCase();
+        switch (c) {
+            case ' ':
+                result += '| ';
+                break;
+
+            case '<':
+                spacing = '';
+                break;
+
+            case '>':
+                spacing = ' ';
+                break;
+
+            default:
+                if (c in MORSE_ALL) {
+                    result += MORSE_ALL[c] + spacing;
+                }
+                break;
+        }
+    }
+
+    return result.trim();
+}

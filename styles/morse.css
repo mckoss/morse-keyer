@@ -1,0 +1,9 @@
+g.morse {
+    fill: none;
+    stroke: black;
+    stroke-width: 10;
+}
+
+g.morse line {
+    stroke-linecap: round;
+}

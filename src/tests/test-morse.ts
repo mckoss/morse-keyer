@@ -1,6 +1,6 @@
 import { assert } from "chai";
 
-import { MORSE_LETTERS, MORSE_DIGITS, MORSE_PUNCTUATION, MORSE_PROSIGNS, MORSE_ALL } from "../morse.js";
+import { MORSE_LETTERS, MORSE_DIGITS, MORSE_ALL, textToMorse } from "../morse.js";
 
 suite("Morse", () => {
     test("number of letters", () => {
@@ -15,6 +15,20 @@ suite("Morse", () => {
         const encodings = Object.values(MORSE_ALL);
         const unique = new Set(encodings);
         assert.equal(encodings.length, unique.size);
+    });
+
+    test("textToMorse", () => {
+        const test = [
+            { text: "A", morse: ".-" },
+            { text: "AA", morse: ".- .-" },
+            { text: "A A", morse: ".- | .-" },
+            { text: "<SOS>", morse: "...---..." },
+            { text: "CQ CQ DE K7MCK <SK>", morse: "-.-. --.- | -.-. --.- | -.. . | -.- --... -- -.-. -.- | ...-.-" },
+            { text: "Hello, world!", morse: ".... . .-.. .-.. --- --..-- | .-- --- .-. .-.. -.. -.-.--" },
+        ];
+        for (const { text, morse } of test) {
+            assert.equal(textToMorse(text), morse);
+        }
     });
 });
 

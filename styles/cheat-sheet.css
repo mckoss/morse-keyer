@@ -15,3 +15,7 @@ table.morse-table td {
     min-width: 2rem;
     padding: 0.5rem;
 }
+
+svg {
+    outline: 1px solid red;
+}
