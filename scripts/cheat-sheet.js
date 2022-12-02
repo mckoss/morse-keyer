@@ -1,4 +1,4 @@
-import { htmlFromMorse } from './morse.js';
+import { morseToSvg } from './morse.js';
 export { tableFromElements };
 function tableFromElements(elements) {
     const table = document.createElement('table');
@@ -7,7 +7,7 @@ function tableFromElements(elements) {
     for (const key of ordered) {
         const row = table.insertRow();
         row.insertCell().textContent = key;
-        row.insertCell().innerHTML = htmlFromMorse(elements[key]);
+        row.insertCell().innerHTML = morseToSvg(elements[key]);
     }
     return table;
 }

@@ -1,4 +1,4 @@
-export { MORSE_LETTERS, MORSE_DIGITS, MORSE_PUNCTUATION, MORSE_PROSIGNS, MORSE_ALL, MORSE_DOT, MORSE_DASH, htmlFromMorse, textToMorse, morseToTiming };
+export { MORSE_LETTERS, MORSE_DIGITS, MORSE_PUNCTUATION, MORSE_PROSIGNS, MORSE_ALL, MORSE_DOT, MORSE_DASH, htmlFromMorse, textToMorse, morseToTiming, morseToSvg };
 // These are close but imperfect approximations of correctly aligned
 // and scaled dots and dashes.
 const MORSE_DOT = "&sdot;";
@@ -37,27 +37,6 @@ const MORSE_PROSIGNS = {
     'HH': 'Sending error - retying',
 };
 const MORSE_ALL = { ...MORSE_LETTERS, ...MORSE_DIGITS, ...MORSE_PUNCTUATION };
-// Convert string with '.', '-', and ' ' to an svg element that renders the morse code as dots and
-// dashes. This uses morse.css for common styling of line width and color. This is based on an SVG
-// coordinate system wher the dots are 10 units wide.  We also add 15 units of space before and
-// after the symbols - so that abutting symbols would be correctly spaced at 30 units apart
-// (inter-character spacing).
-//
-// Dot width: 10 units (same as line width)
-// Dash width: 30 units (20 unit line with end-caps of 5 units each)
-// Inter-symbol spacing: 10 units
-// Inter-charcter spacing: 30 units
-// Prefix/postfix spacing: 15 units
-function morseToSvg(morse) {
-    //     <svg width="40px" height="25px" viewBox="0 0 80 50" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    //     <g class="morse">
-    //         <line x1="20" y1="25" x2="20" y2="25"  />
-    //         <line x1="40" y1="25" x2="60" y2="25"  />
-    //     </g>
-    // </svg>
-    //     return morse.replace(/\./g, MORSE_DOT).replace(/-/g, MORSE_DASH);
-    return morse;
-}
 // Convert string of characters to string or morse code dots, dashes, and spaces.
 // Inter-character spacing will output as a single space.  Inter-word spacing will output as a
 // verticle bar surrounded by spaces (' | ').
@@ -119,6 +98,40 @@ function morseToTiming(morse) {
                 break;
         }
     }
+    return result;
+}
+// Convert string with '.', '-', and ' ' to an svg element that renders the morse code as dots and
+// dashes. This uses morse.css for common styling of line width and color. This is based on an SVG
+// coordinate system wher the dots are 10 units wide.  We also add 15 units of space before and
+// after the symbols - so that abutting symbols would be correctly spaced at 30 units apart
+// (inter-character spacing).
+//
+// Dot width: 10 units (same as line width)
+// Dash width: 30 units (20 unit line with end-caps of 5 units each)
+// Inter-symbol spacing: 10 units
+// Inter-charcter spacing: 30 units
+// Prefix/postfix spacing: 15 units
+function morseToSvg(morse) {
+    const d = 10;
+    const offset = 1.5 * d;
+    const height = 5 * d;
+    const mid = height / 2;
+    const scale = 0.5;
+    const timing = morseToTiming(morse);
+    const width = offset + timing[timing.length - 1] * d + offset;
+    if (timing.length === 0) {
+        return '';
+    }
+    let result = `<svg class="morse" width="${width * scale}px" height="${height * scale}px" ` +
+        `viewBox="0 0 ${width} ${height}"><g>`;
+    for (let i = 0; i < timing.length; i += 2) {
+        const on = timing[i];
+        const off = timing[i + 1];
+        const x = offset + on * d + d / 2;
+        const w = (off - on - 1) * d;
+        result += `\n  <line x1="${x}" y1="${mid}" x2="${x + w}" y2="${mid}" />`;
+    }
+    result += `\n</g></svg>`;
     return result;
 }
 //# sourceMappingURL=morse.js.map

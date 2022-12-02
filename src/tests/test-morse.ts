@@ -2,7 +2,7 @@ import { assert } from "chai";
 
 import {
     MORSE_LETTERS, MORSE_DIGITS, MORSE_ALL,
-    textToMorse, morseToTiming
+    textToMorse, morseToTiming, morseToSvg, htmlFromMorse
 } from "../morse.js";
 
 suite("Morse", () => {
@@ -50,6 +50,23 @@ suite("Morse", () => {
         for (const { morse, timing } of test) {
             assert.deepEqual(morseToTiming(morse), timing);
         }
+    });
+
+    test("morseToSvg", () => {
+        const test = [
+            { morse: "", svg: "" },
+            { morse: ".",
+              svg: '<svg class="morse" width="20px" height="25px" viewBox="0 0 40 50"><g>' +
+                   '\n  <line x1="20" y1="25" x2="20" y2="25" />' +
+                   '\n</g></svg>' },
+        ];
+        for (const { morse, svg } of test) {
+            assert.equal(morseToSvg(morse), svg);
+        }
+    });
+
+    test("htmlFromMorse", () => {
+        assert.equal(htmlFromMorse('.-'), '&sdot;&minus;');
     });
 });
 

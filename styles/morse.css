@@ -1,9 +1,11 @@
-g.morse {
+svg.morse {
+    margin: 0;
+    padding: 0;
     fill: none;
     stroke: black;
     stroke-width: 10;
 }
 
-g.morse line {
+svg.morse line {
     stroke-linecap: round;
 }
