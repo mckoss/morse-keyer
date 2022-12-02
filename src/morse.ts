@@ -1,6 +1,6 @@
 export {
     MorseTable, MORSE_LETTERS, MORSE_DIGITS, MORSE_PUNCTUATION, MORSE_PROSIGNS, MORSE_ALL,
-    MORSE_DOT, MORSE_DASH, htmlFromMorse, textToMorse
+    MORSE_DOT, MORSE_DASH, htmlFromMorse, textToMorse, morseToTiming
 };
 
 interface MorseTable {
@@ -109,4 +109,40 @@ function textToMorse(text: string): string {
     }
 
     return result.trim();
+}
+
+// Return numerical timing for a morse text string as sequence of [on, off] pairs
+// in units of 1 unit for a dot.  The first element is the on time, the second is the off time.
+// The only characters affecting the output are '.', '-', ' ' and '|'.  All other characters
+// are ignored.
+function morseToTiming(morse: string): number[] {
+    let result: number[] = [];
+    let time = 0;
+    for (let c of morse) {
+        switch (c) {
+            case '.':
+                result.push(time, time + 1);
+                time += 2;
+                break;
+
+            case '-':
+                result.push(time, time + 3);
+                time += 4;
+                break;
+
+            case ' ':
+                // Previous symbol already added 1 unit of space.
+                // Bring the total to 3.
+                time += 2;
+                break;
+
+            case '|':
+                // It is expected that | will be surrounded by spaces giving a total of 7 units of
+                // space between words.
+                time += 2;
+                break;
+        }
+    }
+
+    return result;
 }
