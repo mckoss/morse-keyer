@@ -46,7 +46,7 @@ const MORSE_PROSIGNS = {
     'BT': 'New section',
     'SK': 'End of contact',
     'K': 'End of tranmission (over)',
-    'KN': 'End of transmission - other station only reply',
+    'KN': 'End of transmission (only contact station reply)',
     'HH': 'Sending error - retying',
 };
 
