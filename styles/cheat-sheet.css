@@ -126,25 +126,18 @@ div.prosign > div {
     border-collapse: collapse;
     font-size: 0.5rem;
     width: 100%;
-    border: 2px solid black;
 }
 
-#bands thead th {
-    /* width: 15%; */
-    border-bottom: 4px solid black;
+#bands td + td, #bands th + td, #bands th + th {
+    border-left: 2px solid black;
 }
 
-#bands tbody th {
-    border-right: 4px solid black;
+#bands thead {
     border-bottom: 2px solid black;
 }
 
-#bands th + th {
-    border-left: 2px solid black;
-}
-
-#bands td + td {
-    border-left: 2px solid black;
+#bands tr + tr {
+    border-top: 2px solid black;
 }
 
 #bands td {
