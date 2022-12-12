@@ -11,27 +11,62 @@
 <body>
     <h1 class="full">Ham Radio CW Cheatsheet<span class="by">by K7MCK</span></h1>
 
-    <section class="full">
+    <section id="letter-table" class="full" style="--cols: 6;">
         <h2>Letters</h2>
-        <div id="letter-table"></div>
     </section>
 
-    <section class="full">
+    <section id="number-table" class="third-1" style="--rows: 5;">
         <h2>Numbers</h2>
-        <div id="number-table"></div>
     </section>
 
-    <section class="full">
+    <section id="symbol-table" class="twothirds-2" style="--rows: 6;--cols:3;">
         <h2>Symbols</h2>
-        <div id="symbol-table"></div>
     </section>
 
-    <section class="full">
+    <section id="prosign-table" class="prosign half-1" style="--rows: 4;--cols: 2;">
         <h2>Prosigns</h2>
-        <div id="prosign-table"></div>
     </section>
 
-    <div class="full">
+    <section class="half-2" style="--rows: 6;--cols:2;">
+        <h2>Q Codes</h2>
+        <div class="table definitions">
+            <div><span>QRL?</span>Is this frequency busy?</div>
+            <div><span>QRM</span>Radio interference.</div>
+            <div><span>QRN</span>Static noise.</div>
+            <div><span>QSB</span>Signal fading.</div>
+            <div><span>QSY</span>Change frequency.</div>
+            <div><span>QTH</span>My location.</div>
+            <div><span>QRS</span>Send more slowly (__ WPM).</div>
+            <div><span>QSL?</span>Do you aknowledge?</div>
+            <div><span>QRZ</span>Next station calling?</div>
+            <div><span>QRP</span>Low power</div>
+            <div><span>QSO</span>Conversation/contact</div>
+        </div>
+    </section>
+
+    <section class="full" style="--rows: 6;--cols: 3;">
+        <h2>Abbreviations</h2>
+        <div class="table definitions">
+            <div><span>CQ</span>Calling any station</div>
+            <div><span>DE</span>This is &lt;callsign&gt;</div>
+            <div><span>TU</span>Thank you</div>
+            <div><span>73</span>Best regards</div>
+            <div><span>UR</span>Your</div>
+            <div><span>HR</span>Here (my)</div>
+            <div><span>RST</span>Signal report</div>
+            <div><span>599</span>Perfect signal report (also 5NN)</div>
+            <div><span>GM/GA/GE</span>Good morning, afternoon, or evening</div>
+            <div><span>FB</span>Fine business</div>
+            <div><span>HW?</span>How copy?</div>
+            <div><span>RIG</span>Radio equipment</div>
+            <div><span>ANT</span>Antenna</div>
+            <div><span>WX</span>Weather</div>
+            <div><span>ES</span>AND</div>
+            <div><span>FER</span>FOR</div>
+        </div>
+    </section>
+
+    <section class="half-1">
         <h2>Typical QSO</h2>
         <div class="text">
             <p>You: CQ CQ DE <span class="fill-in">your callsign</span> <span class="fill-in">your callsign</span> K</p>
@@ -48,44 +83,9 @@
                 <span class="fill-in">your callsign</span> K
                 (or simply <span style="text-decoration: overline">BK</span>)</p>
         </div>
-    </div>
+    </section>
 
-    <div class="half-1 definitions" style="align-content: flex-start;">
-        <h2>Abbreviations</h2>
-        <div><span>CQ</span>Calling any station</div>
-        <div><span>DE</span>This is &lt;callsign&gt;</div>
-        <div><span>TU</span>Thank you</div>
-        <div><span>73</span>Best regards</div>
-        <div><span>UR</span>Your</div>
-        <div><span>HR</span>Here (my)</div>
-        <div><span>RST</span>Signal report</div>
-        <div><span>599</span>Perfect signal report (also 5NN)</div>
-        <div><span>GM/GA/GE</span>Good morning, afternoon, or evening</div>
-        <div><span>FB</span>Fine business</div>
-        <div><span>HW?</span>How copy?</div>
-        <div><span>RIG</span>Radio equipment</div>
-        <div><span>ANT</span>Antenna</div>
-        <div><span>WX</span>Weather</div>
-        <div><span>ES</span>AND</div>
-        <div><span>FER</span>FOR</div>
-    </div>
-
-    <div class="half-2 definitions">
-        <h2>Q Codes</h2>
-        <div><span>QRL?</span>Is this frequency busy?</div>
-        <div><span>QRM</span>Radio interference.</div>
-        <div><span>QRN</span>Static noise.</div>
-        <div><span>QSB</span>Signal fading.</div>
-        <div><span>QSY</span>Change frequency.</div>
-        <div><span>QTH</span>My location.</div>
-        <div><span>QRS</span>Send more slowly (__ WPM).</div>
-        <div><span>QSL?</span>Do you aknowledge?</div>
-        <div><span>QRZ</span>Next station calling?</div>
-        <div><span>QRP</span>Low power</div>
-        <div><span>QSO</span>Conversation/contact</div>
-    </div>
-
-    <div class="half-1">
+    <section class="half-2">
         <h2>CW Sub Bands</h2>
         <table id="bands">
             <thead>
@@ -106,7 +106,7 @@
                 <tr><th>2m</th><td colspan="3">144.0 - 144.1 MHz</td></tr>
             </tbody>
         </table>
-    </div>
+    </section>
 
     <script type="module">
         import { MORSE_LETTERS, MORSE_DIGITS, MORSE_SYMBOLS, MORSE_PROSIGNS } from './scripts/morse.js';
@@ -116,14 +116,14 @@
         letterTable.appendChild(morseTableFromElements(MORSE_LETTERS));
 
         const numberTable = document.getElementById('number-table');
-        numberTable.appendChild(morseTableFromElements(MORSE_DIGITS, [1,2,3,4,5]));
-        numberTable.appendChild(morseTableFromElements(MORSE_DIGITS, [6,7,8,9,0]));
+        numberTable.appendChild(morseTableFromElements(MORSE_DIGITS,
+            [1,2,3,4,5, 6, 7, 8, 9, 0]));
 
         const symbolTable = document.getElementById('symbol-table');
         symbolTable.appendChild(morseTableFromElements(MORSE_SYMBOLS));
 
         const prosignTable = document.getElementById('prosign-table');
-        prosignTable.appendChild(tableFromElements(MORSE_PROSIGNS, 'prosign'));
+        prosignTable.appendChild(tableFromElements(MORSE_PROSIGNS, 'definitions'));
     </script>
 </body>
 </html>
