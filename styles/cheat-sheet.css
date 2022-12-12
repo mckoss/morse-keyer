@@ -163,6 +163,7 @@ div.dialog {
     grid-auto-columns: auto;
     padding: 0.4rem;
     gap: 0 0.5rem;
+    font-size: 0.8em;
 }
 
 div.dialog p.who {
@@ -186,7 +187,7 @@ span.fill-in {
 div.definitions > div {
     display: flex;
     align-items: center;
-    font-size: 0.5rem;
+    font-size: 0.75rem;
 }
 
 div.definitions > div > span {
