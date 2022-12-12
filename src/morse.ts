@@ -150,8 +150,7 @@ function morseToSvg(morse: string): string {
         return '';
     }
 
-    let result = `<svg class="morse" width="${width * scale}px" height="${height * scale}px" ` +
-                 `viewBox="0 0 ${width} ${height}"><g>`;
+    let result = `<svg class="morse" viewBox="0 0 ${width} ${height}"><g>`;
 
     for (let i = 0; i < timing.length; i += 2) {
         const on = timing[i];
