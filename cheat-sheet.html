@@ -124,13 +124,12 @@
         letterTable.appendChild(morseTableFromElements(MORSE_LETTERS));
 
         const numberTable = document.getElementById('number-table');
-        numberTable.appendChild(
-            morseTableFromElements(
-                MORSE_DIGITS,
-                [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
+        numberTable.appendChild(morseTableFromElements(MORSE_DIGITS,
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
 
         const symbolTable = document.getElementById('symbol-table');
-        symbolTable.appendChild(morseTableFromElements(MORSE_SYMBOLS));
+        symbolTable.appendChild(morseTableFromElements(MORSE_SYMBOLS,
+            ['.', ',', '=', '?', '/', '!', '\'', '"', '-', '+', ';', ':', '(', ')', '&', '_', '$', '@']));
 
         const prosignTable = document.getElementById('prosign-table');
         prosignTable.appendChild(tableFromElements(MORSE_PROSIGNS, 'definitions'));
