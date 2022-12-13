@@ -31,7 +31,7 @@ const MORSE_SYMBOLS = {
 };
 // Prosigns as used in Amateur Radio CW contacts
 const MORSE_PROSIGNS = {
-    '<AR>': 'End of message body (followed by callsigns)',
+    '<AR>': 'End of message body (followed by callsigns) (+)',
     '<AS>': 'Wait (&)',
     'BK': 'Back to you (break in)',
     '<BT>': 'New section (=)',
