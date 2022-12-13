@@ -46,7 +46,7 @@ suite("Morse", () => {
         const test = [
             { morse: "", svg: "" },
             { morse: ".",
-                svg: '<svg class="morse" width="20px" height="25px" viewBox="0 0 40 50"><g>' +
+                svg: '<svg class="morse" viewBox="0 0 40 50"><g>' +
                     '\n  <line x1="20" y1="25" x2="20" y2="25" />' +
                     '\n</g></svg>' },
         ];
