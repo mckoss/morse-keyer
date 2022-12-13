@@ -27,11 +27,11 @@ const MORSE_SYMBOLS = {
 };
 // Prosigns as used in Amateur Radio CW contacts
 const MORSE_PROSIGNS = {
-    'AR': 'End of message',
-    'AS': 'Wait',
+    'AR': 'End of message proper (followed by callsigns)',
+    'AS': 'Wait (&)',
     'BK': 'Break',
-    'BT': 'New section',
-    'SK': 'End of contact',
+    'BT': 'New section (=)',
+    'SK': 'End of contact (final transmission)',
     'K': 'End of tranmission (over)',
     'KN': 'End of transmission (only contact station reply)',
     'HH': 'Sending error - retying',

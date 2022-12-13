@@ -33,16 +33,16 @@
             <h2>Q Codes</h2>
             <div class="table definitions">
                 <div><span>QRL?</span>Is this frequency busy?</div>
+                <div><span>QSO</span>Conversation/contact</div>
+                <div><span>QRS</span>Send more slowly (__ WPM).</div>
+                <div><span>QTH</span>My location.</div>
+                <div><span>QRZ</span>Next station calling?</div>
+                <div><span>QSY</span>Change frequency.</div>
                 <div><span>QRM</span>Radio interference.</div>
                 <div><span>QRN</span>Static noise.</div>
                 <div><span>QSB</span>Signal fading.</div>
-                <div><span>QSY</span>Change frequency.</div>
-                <div><span>QTH</span>My location.</div>
-                <div><span>QRS</span>Send more slowly (__ WPM).</div>
                 <div><span>QSL?</span>Do you aknowledge?</div>
-                <div><span>QRZ</span>Next station calling?</div>
                 <div><span>QRP</span>Low power</div>
-                <div><span>QSO</span>Conversation/contact</div>
             </div>
         </section>
 
@@ -63,8 +63,8 @@
                 <div><span>RIG</span>Radio equipment</div>
                 <div><span>ANT</span>Antenna</div>
                 <div><span>WX</span>Weather</div>
-                <div><span>ES</span>AND</div>
-                <div><span>FER</span>FOR</div>
+                <div><span>ES</span>and</div>
+                <div><span>FER</span>for</div>
             </div>
         </section>
 
@@ -81,8 +81,8 @@
                 <p class="who">You:</p>
                 <p>GM <span class="fill-in">their callsign</span> TNX FER CALL</p>
                 <p>UR RST 599</p>
-                <p>QTH <span class="fill-in">your city</span> <span class="fill-in">your city</span></p>
                 <p>NAME <span class="fill-in">your name</span> <span class="fill-in">your name</span></p>
+                <p>QTH <span class="fill-in">your city</span> <span class="fill-in">your city</span></p>
                 <p>HW?</p>
                 <p><span style="text-decoration: overline">AR</span>
                     <span class="fill-in">their callsign</span> DE
@@ -132,7 +132,8 @@
             ['.', ',', '=', '?', '/', '!', '\'', '"', '-', '+', ';', ':', '(', ')', '&', '_', '$', '@']));
 
         const prosignTable = document.getElementById('prosign-table');
-        prosignTable.appendChild(tableFromElements(MORSE_PROSIGNS, 'definitions'));
+        prosignTable.appendChild(tableFromElements(MORSE_PROSIGNS, 'definitions', undefined,
+            ['K', 'KN', 'BT', 'BK', 'AR', 'HH', 'AS', 'SK']));
     </script>
 </body>
 </html>
