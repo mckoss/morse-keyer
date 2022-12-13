@@ -2,7 +2,7 @@ import { assert } from "chai";
 
 import {
     MORSE_LETTERS, MORSE_DIGITS, MORSE_ALL,
-    textToMorse, morseToTiming, morseToSvg, htmlFromMorse
+    textToMorse, morseToTiming, morseToSvg, htmlFromMorse, symbolCategory
 } from "../morse.js";
 
 suite("Morse", () => {
@@ -67,6 +67,20 @@ suite("Morse", () => {
 
     test("htmlFromMorse", () => {
         assert.equal(htmlFromMorse('.-'), '&sdot;&minus;');
+    });
+
+    test("symbolCategory", () => {
+        const tests = [
+            { symbol: 'a', category: 'letter' },
+            { symbol: 'A', category: 'letter' },
+            { symbol: '1', category: 'digit' },
+            { symbol: ' ', category: 'NA' },
+            { symbol: '!', category: 'symbol' },
+        ];
+
+        for (const { symbol, category } of tests) {
+            assert.equal(symbolCategory(symbol), category);
+        }
     });
 });
 

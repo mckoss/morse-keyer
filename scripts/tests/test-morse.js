@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { MORSE_LETTERS, MORSE_DIGITS, MORSE_ALL, textToMorse, morseToTiming, morseToSvg, htmlFromMorse } from "../morse.js";
+import { MORSE_LETTERS, MORSE_DIGITS, MORSE_ALL, textToMorse, morseToTiming, morseToSvg, htmlFromMorse, symbolCategory } from "../morse.js";
 suite("Morse", () => {
     test("number of letters", () => {
         assert.equal(Object.keys(MORSE_LETTERS).length, 26);
@@ -56,6 +56,18 @@ suite("Morse", () => {
     });
     test("htmlFromMorse", () => {
         assert.equal(htmlFromMorse('.-'), '&sdot;&minus;');
+    });
+    test("symbolCategory", () => {
+        const tests = [
+            { symbol: 'a', category: 'letter' },
+            { symbol: 'A', category: 'letter' },
+            { symbol: '1', category: 'digit' },
+            { symbol: ' ', category: 'NA' },
+            { symbol: '!', category: 'symbol' },
+        ];
+        for (const { symbol, category } of tests) {
+            assert.equal(symbolCategory(symbol), category);
+        }
     });
 });
 //# sourceMappingURL=test-morse.js.map

@@ -1,4 +1,4 @@
-export { MORSE_LETTERS, MORSE_DIGITS, CUT_NUMBERS, MORSE_SYMBOLS, MORSE_PROSIGNS, MORSE_ALL, MORSE_DOT, MORSE_DASH, htmlFromMorse, textToMorse, morseToTiming, morseToSvg };
+export { MORSE_LETTERS, MORSE_DIGITS, CUT_NUMBERS, MORSE_SYMBOLS, MORSE_PROSIGNS, MORSE_ALL, MORSE_DOT, MORSE_DASH, htmlFromMorse, textToMorse, morseToTiming, morseToSvg, symbolCategory };
 // These are close but imperfect approximations of correctly aligned
 // and scaled dots and dashes.
 const MORSE_DOT = "&sdot;";
@@ -40,6 +40,24 @@ const MORSE_PROSIGNS = {
     '<KN>': 'Go ahead (specific station, also "(")',
     '<HH>': 'Sending error - retrying',
 };
+function symbolCategory(symbol) {
+    symbol = symbol.toUpperCase();
+    if (symbol in MORSE_LETTERS) {
+        return 'letter';
+    }
+    else if (symbol in MORSE_DIGITS) {
+        return 'digit';
+    }
+    else if (symbol in MORSE_SYMBOLS) {
+        return 'symbol';
+    }
+    else if (symbol in MORSE_PROSIGNS) {
+        return 'prosign';
+    }
+    else {
+        return 'NA';
+    }
+}
 const MORSE_ALL = { ...MORSE_LETTERS, ...MORSE_DIGITS, ...MORSE_SYMBOLS };
 // Convert string of characters to string or morse code dots, dashes, and spaces.
 // Inter-character spacing will output as a single space.  Inter-word spacing will output as a
@@ -50,10 +68,10 @@ const MORSE_ALL = { ...MORSE_LETTERS, ...MORSE_DIGITS, ...MORSE_SYMBOLS };
 function textToMorse(text) {
     text = text.trim();
     text = text.replace(/\s\s+/g, ' ');
+    text = text.toUpperCase();
     let result = '';
     let spacing = ' ';
     for (let c of text) {
-        c = c.toUpperCase();
         switch (c) {
             case ' ':
                 result += '| ';

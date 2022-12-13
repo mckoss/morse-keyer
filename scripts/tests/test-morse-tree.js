@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { rotate, findPosition } from "../morse-tree.js";
+import { rotate, findPosition, makeMorseTree } from "../morse-tree.js";
 suite("Morse", () => {
     test("rotate", () => {
         const tests = [
@@ -33,6 +33,11 @@ suite("Morse", () => {
             assert.equal(result[0], expected[0]);
             assert.equal(result[1], expected[1]);
         }
+    });
+    test("makeMorseTree", () => {
+        const tree = makeMorseTree({ 'A': '.-' });
+        assert.isTrue(tree.startsWith(`<svg class="morse-tree" viewBox="-2 -2 4 4">`));
+        assert.isTrue(tree.endsWith(`\n</svg>`));
     });
 });
 //# sourceMappingURL=test-morse-tree.js.map

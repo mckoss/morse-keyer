@@ -7,22 +7,76 @@
     <link rel="stylesheet" href="./styles/morse.css">
     <title>Test for Morse Tree</title>
     <style>
-        svg {
+        h1 {
+            text-align: center;
+        }
+
+        svg.morse-tree {
+            display: block;
             width: 600px;
             border: 1px solid black;
+            margin: auto;
+        }
+
+        p {
+            display: block;
+            width: 600px;
+            margin: 1rem auto;
+        }
+
+        svg.morse {
+            display: inline-block;
+            height: 2rem;
+            position: relative;
+            top: 0.7rem;
         }
     </style>
 </head>
 <body>
-    <h1>Morse Code Letters</h1>
-    <div id="letters"></div>
+    <h1>Morse Decoder</h1>
+    <div id="tree"></div>
+
+    <p>
+        To decode a morse code symbol, start at the center of the diagram and follow
+        the path to the final letter.  Traverse the red lines for each dot and
+        the black lines for each dash in the morse code representation.
+    </p>
+
+    <p>
+        For example to decode <span id="e"></span>, start at the center and follow
+        the red line to the letter "E".
+    </p>
+    <p>
+        To decode <span id="t"></span>, start at the center and follow the black line
+        to the letter "T".
+    </p>
+    <p>
+        To decode <span id="v"></span>, start at the center and follow the red, red,
+        red, and black lines to the letter "V".
+    </p>
+    <p>
+        To decode <span id="exclamation"></span>, start at the center
+        and follow the black, red, black, red, black, and black lines to the symbol "!".
+    </p>
 
     <script type="module">
-        import { MORSE_LETTERS } from './scripts/morse.js';
+        import { MORSE_ALL, morseToSvg } from './scripts/morse.js';
         import { makeMorseTree } from './scripts/morse-tree.js';
 
-        const letterTree = document.getElementById('letters');
-        letterTree.insertAdjacentHTML('beforeend', makeMorseTree(MORSE_LETTERS));
+        const letterTree = document.getElementById('tree');
+        letterTree.insertAdjacentHTML('beforeend', makeMorseTree(MORSE_ALL));
+
+        const SPANS = {
+            "e": ".",
+            "t": "-",
+            "v": "...-",
+            "exclamation": "-.-.--",
+        };
+
+        for (const [id, morse] of Object.entries(SPANS)) {
+            const span = document.getElementById(id);
+            span.insertAdjacentHTML('beforeend', morseToSvg(morse));
+        }
     </script>
 </body>
 </html>
