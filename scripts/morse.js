@@ -1,4 +1,4 @@
-export { MORSE_LETTERS, MORSE_DIGITS, MORSE_SYMBOLS, MORSE_PROSIGNS, MORSE_ALL, MORSE_DOT, MORSE_DASH, htmlFromMorse, textToMorse, morseToTiming, morseToSvg };
+export { MORSE_LETTERS, MORSE_DIGITS, CUT_NUMBERS, MORSE_SYMBOLS, MORSE_PROSIGNS, MORSE_ALL, MORSE_DOT, MORSE_DASH, htmlFromMorse, textToMorse, morseToTiming, morseToSvg };
 // These are close but imperfect approximations of correctly aligned
 // and scaled dots and dashes.
 const MORSE_DOT = "&sdot;";
@@ -18,6 +18,10 @@ const MORSE_DIGITS = {
     0: '-----', 1: '.----', 2: '..---', 3: '...--', 4: '....-',
     5: '.....', 6: '-....', 7: '--...', 8: '---..', 9: '----.'
 };
+const CUT_NUMBERS = {
+    0: '-', 1: '.-', 2: '..-', 3: '...-',
+    5: '.', 7: '-...', 8: '-..', 9: '-.'
+};
 const MORSE_SYMBOLS = {
     '.': '.-.-.-', ',': '--..--', '?': '..--..', "'": '.----.',
     '!': '-.-.--', '/': '-..-.', '(': '-.--.', ')': '-.--.-',
@@ -27,14 +31,14 @@ const MORSE_SYMBOLS = {
 };
 // Prosigns as used in Amateur Radio CW contacts
 const MORSE_PROSIGNS = {
-    'AR': 'End of message proper (followed by callsigns)',
-    'AS': 'Wait (&)',
-    'BK': 'Break',
-    'BT': 'New section (=)',
-    'SK': 'End of contact (final transmission)',
-    'K': 'End of tranmission (over)',
-    'KN': 'End of transmission (only contact station reply)',
-    'HH': 'Sending error - retying',
+    '<AR>': 'End of message body (followed by callsigns)',
+    '<AS>': 'Wait (&)',
+    'BK': 'Back to you (break in)',
+    '<BT>': 'New section (=)',
+    '<SK>': 'End of contact (final transmission)',
+    'K': 'Go ahead (over)',
+    '<KN>': 'Go ahead (specific station, also "(")',
+    '<HH>': 'Sending error - retrying',
 };
 const MORSE_ALL = { ...MORSE_LETTERS, ...MORSE_DIGITS, ...MORSE_SYMBOLS };
 // Convert string of characters to string or morse code dots, dashes, and spaces.

@@ -11,12 +11,20 @@ function tableFromElements(elements: MorseTable, className: string, mapping?: (v
     table.classList.add(className, 'table');
     keys = keys || Object.keys(elements).sort();
 
-    for (const key of keys) {
+    for (let key of keys) {
         const elt = document.createElement('div');
         const sym = document.createElement('span');
+        let value = elements[key];
+
+        // Process Prosigns in brackets
+        if (typeof key === 'string' && key.match(/^\<.*\>$/)) {
+            key = key.replace(/^\<(.*)\>$/, '$1');
+            sym.classList.add('over');
+        }
+
         sym.textContent = key;
         elt.appendChild(sym);
-        let value = elements[key];
+
         if (mapping) {
             value = mapping(value);
         }

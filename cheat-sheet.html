@@ -11,19 +11,10 @@
 <body>
     <div id="page">
 
-        <h1 class="full">Ham Radio CW Cheatsheet<span class="by">by K7MCK</span></h1>
-
-        <section id="letter-table" class="full" style="--rows: 4;">
-            <h2>Letters</h2>
-        </section>
-
-        <section id="number-table" class="half-1" style="--rows: 5;">
-            <h2>Numbers</h2>
-        </section>
-
-        <section id="symbol-table" class="half-2" style="--rows: 6;">
-            <h2>Symbols</h2>
-        </section>
+        <h1 class="full">Ham Radio CW Cheatsheet
+            <span class="by">by K7MCK</span>
+            <span class="date">2022-12-12</span>
+        </h1>
 
         <section id="prosign-table" class="prosign half-1" style="--rows: 4;">
             <h2>Prosigns</h2>
@@ -34,14 +25,15 @@
             <div class="table definitions">
                 <div><span>QRL?</span>Is this frequency busy?</div>
                 <div><span>QSO</span>Conversation/contact</div>
-                <div><span>QRS</span>Send more slowly (__ WPM).</div>
+                <div><span>QRS</span>Send more slowly (&#xFF3F;&nbsp;WPM).</div>
+                <div><span>QRQ</span>Send faster (&#xFF3F;&nbsp;WPM).</div>
                 <div><span>QTH</span>My location.</div>
-                <div><span>QRZ</span>Next station calling?</div>
+                <div><span>QRZ?</span>Who is calling me?</div>
                 <div><span>QSY</span>Change frequency.</div>
                 <div><span>QRM</span>Radio interference.</div>
-                <div><span>QRN</span>Static noise.</div>
+                <div><span>QRN</span>Static (natural) interference.</div>
                 <div><span>QSB</span>Signal fading.</div>
-                <div><span>QSL?</span>Do you aknowledge?</div>
+                <div><span>QSL?</span>Acknowledge receipt?</div>
                 <div><span>QRP</span>Low power</div>
             </div>
         </section>
@@ -51,9 +43,9 @@
             <div class="table definitions">
                 <div><span>CQ</span>Calling any station</div>
                 <div><span>DE</span>This is &lt;callsign&gt;</div>
-                <div><span>TU</span>Thank you</div>
+                <div><span>TU</span>Thank you (sometimes THX)</div>
                 <div><span>73</span>Best regards</div>
-                <div><span>UR</span>Your</div>
+                <div><span>UR</span>Your or you're</div>
                 <div><span>HR</span>Here (my)</div>
                 <div><span>RST</span>Signal report</div>
                 <div><span>599</span>Perfect signal report (also 5NN)</div>
@@ -83,8 +75,7 @@
                 <p>UR RST 599</p>
                 <p>NAME <span class="fill-in">your name</span> <span class="fill-in">your name</span></p>
                 <p>QTH <span class="fill-in">your city</span> <span class="fill-in">your city</span></p>
-                <p>HW?</p>
-                <p><span style="text-decoration: overline">AR</span>
+                <p>HW? <span class="over">AR</span>
                     <span class="fill-in">their callsign</span> DE
                     <span class="fill-in">your callsign</span> K
                     </p>
@@ -114,10 +105,26 @@
             </table>
         </section>
 
+        <section id="letter-table" class="full" style="--rows: 4;">
+            <h2>Letters</h2>
+        </section>
+
+        <section id="number-table" class="third-1" style="--rows: 5;">
+            <h2>Numbers</h2>
+        </section>
+
+        <section id="cut-number-table" class="sixth-1" style="--rows: 8;">
+            <h2>Cut Numbers</h2>
+        </section>
+
+        <section id="symbol-table" class="half-2" style="--rows: 6;">
+            <h2>Symbols</h2>
+        </section>
+
     </div> <!-- end of page -->
 
     <script type="module">
-        import { MORSE_LETTERS, MORSE_DIGITS, MORSE_SYMBOLS, MORSE_PROSIGNS } from './scripts/morse.js';
+        import { MORSE_LETTERS, MORSE_DIGITS, CUT_NUMBERS, MORSE_SYMBOLS, MORSE_PROSIGNS } from './scripts/morse.js';
         import { morseTableFromElements, tableFromElements } from './scripts/cheat-sheet.js';
 
         const letterTable = document.getElementById('letter-table');
@@ -127,13 +134,17 @@
         numberTable.appendChild(morseTableFromElements(MORSE_DIGITS,
             [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
 
+        const cutNumberTable = document.getElementById('cut-number-table');
+        cutNumberTable.appendChild(morseTableFromElements(CUT_NUMBERS,
+            [1, 2, 3, 5, 7, 8, 9, 0]));
+
         const symbolTable = document.getElementById('symbol-table');
         symbolTable.appendChild(morseTableFromElements(MORSE_SYMBOLS,
             ['.', ',', '=', '?', '/', '!', '\'', '"', '-', '+', ';', ':', '(', ')', '&', '_', '$', '@']));
 
         const prosignTable = document.getElementById('prosign-table');
         prosignTable.appendChild(tableFromElements(MORSE_PROSIGNS, 'definitions', undefined,
-            ['K', 'KN', 'BT', 'BK', 'AR', 'HH', 'AS', 'SK']));
+            ['K', '<KN>', '<BT>', 'BK', '<AR>', '<HH>', '<AS>', '<SK>']));
     </script>
 </body>
 </html>
