@@ -13,7 +13,7 @@
 
         <h1 class="full">Ham Radio CW Cheatsheet
             <span class="by">by K7MCK</span>
-            <span class="date">2022-12-15</span>
+            <span class="date">2022-12-17</span>
         </h1>
 
         <section id="prosign-table" class="prosign half-1" style="--rows: 4;">
@@ -22,17 +22,17 @@
 
         <section class="half-2" style="--rows: 6;">
             <h2>Q Codes</h2>
-            <div class="table definitions">
+            <div class="definitions">
                 <div><span>QRL?</span>Is this frequency busy?</div>
-                <div><span>QSO</span>Conversation/contact</div>
-                <div><span>QRS</span>Send more slowly (&#xFF3F;&nbsp;WPM).</div>
-                <div><span>QRQ</span>Send faster (&#xFF3F;&nbsp;WPM).</div>
+                <div><span>QSO</span>Conversation or contact</div>
+                <div><span>QRS</span>Send more slowly (&#xFF3F;&nbsp;WPM)</div>
+                <div><span>QRQ</span>Send faster (&#xFF3F;&nbsp;WPM)</div>
                 <div><span>QTH</span>My location.</div>
                 <div><span>QRZ?</span>Who is calling me?</div>
-                <div><span>QSY</span>Change frequency.</div>
-                <div><span>QRM</span>Radio interference.</div>
-                <div><span>QRN</span>Static (natural) interference.</div>
-                <div><span>QSB</span>Signal fading.</div>
+                <div><span>QSY</span>Change frequency</div>
+                <div><span>QRM</span>Radio interference</div>
+                <div><span>QRN</span>Static (natural) interference</div>
+                <div><span>QSB</span>Signal fading</div>
                 <div><span>QSL?</span>Acknowledge receipt?</div>
                 <div><span>QRP</span>Low power</div>
             </div>
@@ -40,7 +40,7 @@
 
         <section class="full" style="--rows: 4;">
             <h2>Abbreviations</h2>
-            <div class="table definitions">
+            <div class="definitions">
                 <div><span>CQ</span>Calling any station</div>
                 <div><span>DE</span>This is &lt;callsign&gt;</div>
                 <div><span>TU</span>Thank you (sometimes TNX)</div>
@@ -105,7 +105,7 @@
             </table>
         </section>
 
-        <section id="letter-table" class="full" style="--rows: 4;">
+        <section id="letter-table" class="full" style="--rows: 3;">
             <h2>Letters</h2>
         </section>
 
@@ -148,7 +148,7 @@
             ['.', ',', '=', '?', '/', '!', '\'', '"', '-', '+', ';', ':', '(', ')', '&', '_', '$', '@']));
 
         const prosignTable = document.getElementById('prosign-table');
-        prosignTable.appendChild(tableFromElements(MORSE_PROSIGNS, 'definitions', undefined,
+        prosignTable.appendChild(tableFromElements(MORSE_PROSIGNS, ['definitions'], undefined,
             ['K', '<KN>', '<BT>', 'BK', '<AR>', '<HH>', '<AS>', '<SK>']));
     </script>
 </body>

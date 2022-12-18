@@ -1,11 +1,11 @@
 import { morseToSvg } from './morse.js';
 export { tableFromElements, morseTableFromElements };
 function morseTableFromElements(elements, keys) {
-    return tableFromElements(elements, 'morse', morseToSvg, keys);
+    return tableFromElements(elements, ['morse', 'table'], morseToSvg, keys);
 }
-function tableFromElements(elements, className, mapping, keys) {
+function tableFromElements(elements, classNames, mapping, keys) {
     const table = document.createElement('div');
-    table.classList.add(className, 'table');
+    table.classList.add(...classNames);
     keys = keys || Object.keys(elements).sort();
     for (let key of keys) {
         const elt = document.createElement('div');

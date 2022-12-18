@@ -3,12 +3,12 @@ import { MorseTable, morseToSvg } from './morse.js';
 export { tableFromElements, morseTableFromElements };
 
 function morseTableFromElements(elements: MorseTable, keys?: string[]): HTMLDivElement {
-    return tableFromElements(elements, 'morse', morseToSvg, keys);
+    return tableFromElements(elements, ['morse', 'table'], morseToSvg, keys);
 }
 
-function tableFromElements(elements: MorseTable, className: string, mapping?: (val: string) => string, keys?: string[]): HTMLDivElement {
+function tableFromElements(elements: MorseTable, classNames: string[], mapping?: (val: string) => string, keys?: string[]): HTMLDivElement {
     const table = document.createElement('div');
-    table.classList.add(className, 'table');
+    table.classList.add(...classNames);
     keys = keys || Object.keys(elements).sort();
 
     for (let key of keys) {
