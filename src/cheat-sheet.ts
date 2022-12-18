@@ -16,12 +16,6 @@ function tableFromElements(elements: MorseTable, classNames: string[], mapping?:
         const sym = document.createElement('span');
         let value = elements[key];
 
-        // Process Prosigns in brackets
-        if (typeof key === 'string' && key.match(/^\<.*\>$/)) {
-            key = key.replace(/^\<(.*)\>$/, '$1');
-            sym.classList.add('over');
-        }
-
         sym.textContent = key;
         elt.appendChild(sym);
 

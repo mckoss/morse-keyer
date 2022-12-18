@@ -13,11 +13,21 @@
 
         <h1 class="full">Ham Radio CW Cheatsheet
             <span class="by">by K7MCK</span>
-            <span class="date">2022-12-17</span>
+            <span class="date">2022-12-18</span>
         </h1>
 
-        <section id="prosign-table" class="prosign half-1" style="--rows: 4;">
+        <section class="half-1" style="--rows: 4;">
             <h2>Prosigns</h2>
+            <div class="definitions">
+                <div><span class="over">AR</span>End of message body (followed by callsigns) (+)</div>
+                <div><span class="over">AS</span>Wait (&)</div>
+                <div><span>BK</span>Back to you (break in)</div>
+                <div><span class="over">BT</span>New section (=)</div>
+                <div><span class="over">SK</span>End of contact (final transmission)</div>
+                <div><span>K</span>Go ahead (over)</div>
+                <div><span class="over">KN</span>Go ahead (specific station, also "(")</div>
+                <div><span class="over">HH</span>Sending error - retrying</div>
+            </div>
         </section>
 
         <section class="half-2" style="--rows: 6;">
@@ -129,7 +139,7 @@
 
 
     <script type="module">
-        import { MORSE_LETTERS, MORSE_DIGITS, CUT_NUMBERS, MORSE_SYMBOLS, MORSE_PROSIGNS } from './scripts/morse.js';
+        import { MORSE_LETTERS, MORSE_DIGITS, CUT_NUMBERS, MORSE_SYMBOLS } from './scripts/morse.js';
         import { morseTableFromElements, tableFromElements } from './scripts/cheat-sheet.js';
 
         const letterTable = document.getElementById('letter-table');
@@ -146,10 +156,6 @@
         const symbolTable = document.getElementById('symbol-table');
         symbolTable.appendChild(morseTableFromElements(MORSE_SYMBOLS,
             ['.', ',', '=', '?', '/', '!', '\'', '"', '-', '+', ';', ':', '(', ')', '&', '_', '$', '@']));
-
-        const prosignTable = document.getElementById('prosign-table');
-        prosignTable.appendChild(tableFromElements(MORSE_PROSIGNS, ['definitions'], undefined,
-            ['K', '<KN>', '<BT>', 'BK', '<AR>', '<HH>', '<AS>', '<SK>']));
     </script>
 </body>
 </html>

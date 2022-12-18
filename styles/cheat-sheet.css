@@ -147,13 +147,6 @@ div.morse > div > span {
     font-weight: bold;
 }
 
-div.prosign > div {
-    display: flex;
-    font-size: 0.5rem;
-    justify-content: left;
-    align-items: center;
-}
-
 span.over {
     text-decoration: overline;
 }
@@ -231,9 +224,10 @@ div.definitions > div + div {
 
 div.definitions > div > span {
     font-family: 'Roboto Mono', monospace;
-    font-size: 1rem;
-    padding-right: 0.5rem;
+    font-size: 1.1rem;
     font-weight: bold;
+    padding-right: 0.5rem;
+
 }
 
 @media screen and (max-width: 8in) {
