@@ -1,5 +1,5 @@
 export {
-    MorseTable, MORSE_LETTERS, MORSE_DIGITS, CUT_NUMBERS, MORSE_SYMBOLS, MORSE_PROSIGNS, MORSE_ALL,
+    MorseTable, MORSE_LETTERS, MORSE_DIGITS, CUT_NUMBERS, MORSE_SYMBOLS, MORSE_ALL,
     MORSE_DOT, MORSE_DASH, htmlFromMorse, textToMorse, morseToTiming, morseToSvg, symbolCategory
 };
 
@@ -43,18 +43,6 @@ const MORSE_SYMBOLS: MorseTable = {
     '$': '...-..-', '@': '.--.-.'
 };
 
-// Prosigns as used in Amateur Radio CW contacts
-const MORSE_PROSIGNS = {
-    '<AR>': 'End of message body (followed by callsigns) (+)',
-    '<AS>': 'Wait (&)',
-    'BK': 'Back to you (break in)',
-    '<BT>': 'New section (=)',
-    '<SK>': 'End of contact (final transmission)',
-    'K': 'Go ahead (over)',
-    '<KN>': 'Go ahead (specific station, also "(")',
-    '<HH>': 'Sending error - retrying',
-};
-
 function symbolCategory(symbol: string): string {
     symbol = symbol.toUpperCase();
     if (symbol in MORSE_LETTERS) {
@@ -63,8 +51,6 @@ function symbolCategory(symbol: string): string {
         return 'digit';
     } else if (symbol in MORSE_SYMBOLS) {
         return 'symbol';
-    } else if (symbol in MORSE_PROSIGNS) {
-        return 'prosign';
     } else {
         return 'NA';
     }
