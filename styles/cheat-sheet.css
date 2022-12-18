@@ -9,6 +9,7 @@
 :root {
     /* Default for table grids */
     --rows: 5;
+    --gap: 0.4rem;
 }
 
 html {
@@ -125,8 +126,8 @@ div.table {
     display: grid;
     grid-template-rows: repeat(var(--rows), max-content);
     grid-auto-flow: column;
-    gap: 0.4em;
-    padding: 0.4rem;
+    gap: var(--gap);
+    padding: var(--gap);
     justify-content: center;
 }
 
@@ -143,12 +144,15 @@ div.morse > div {
 
 div.morse > div > span {
     font-family: 'Roboto Mono', monospace;
-    padding-right: 0.5rem;
+    margin-right: 0.5rem;
     font-weight: bold;
 }
 
 span.over {
-    text-decoration: overline;
+    /* Overline is too far from character - this hack moves the underline
+       specifically to a close-to-character position ABOVE the character! */
+    text-decoration: underline;
+    text-underline-offset: -0.9em;
 }
 
 #bands {
@@ -183,8 +187,8 @@ div.dialog {
     display: grid;
     grid-template-columns: max-content 1fr;
     grid-auto-columns: auto;
-    padding: 0.4rem;
-    gap: 0.4rem 0.5rem;
+    padding: var(--gap);
+    gap: var(--gap) 0.5rem;
     font-size: 0.8em;
 }
 
@@ -208,7 +212,7 @@ span.fill-in {
 
 div.definitions {
     column-count: var(--def-columns);
-    padding: 0.25rem 0.5rem;
+    padding: var(--gap) 0.5rem;
 }
 
 div.definitions > div {
@@ -219,14 +223,14 @@ div.definitions > div {
 }
 
 div.definitions > div + div {
-    margin-top: 0.75rem;
+    margin-top: var(--gap);
 }
 
 div.definitions > div > span {
     font-family: 'Roboto Mono', monospace;
     font-size: 1.1rem;
     font-weight: bold;
-    padding-right: 0.5rem;
+    margin-right: 0.5rem;
 
 }
 
