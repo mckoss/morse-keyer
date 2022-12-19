@@ -152,7 +152,7 @@ span.over {
     /* Overline is too far from character - this hack moves the underline
        specifically to a close-to-character position ABOVE the character! */
     text-decoration: underline;
-    text-underline-offset: -0.9em;
+    text-underline-offset: -1em;
 }
 
 #bands {
